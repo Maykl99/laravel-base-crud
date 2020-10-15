@@ -37,7 +37,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data= $request->all();
+        //validiamo
+        $userStudent = new Student;
+        $userStudent->nome = $data['name'];
+        $userStudent->cognome = $data['lastname'];
+        $userStudent->eta = $data['age'];
+        $userStudent->descrizione = $data['descrizione'];
+        $userStudent->save();
         
     }
 

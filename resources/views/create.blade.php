@@ -9,8 +9,8 @@
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
-      <label for="surname">Cognome</label>
-      <input name="surname" type="text" class="form-control" id="surname" required>
+      <label for="lastname">Cognome</label>
+      <input name="lastname" type="text" class="form-control" id="lastname" required>
     </div>
     <div class="form-group">
       <label class="form-check-label" for="age">Età</label>
