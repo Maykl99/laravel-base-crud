@@ -56,7 +56,8 @@ class StudentController extends Controller
         $userStudent->descrizione = $data['descrizione'];
         $saved=$userStudent->save();
 
-        dd($saved);
+        #dd($saved);
+        return redirect()->route('students.index');
         
     }
 

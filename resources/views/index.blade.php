@@ -17,5 +17,6 @@
         </tr>
       @endforeach
     </tbody>
+        <a href="{{ route('students.create') }}"><button type="button" class="btn btn-dark">Aggiungi un campo</button></a>
   </table>
 @endsection
