@@ -38,13 +38,25 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $data= $request->all();
+
+        //controllo 
+        if(empty($data['name']) || 
+            empty($data['lastname']) || 
+            empty($data['age']) || 
+            empty($data['descrizione'])):
+        
+            return back()->withInput();
+        endif;
+
         //validiamo
         $userStudent = new Student;
         $userStudent->nome = $data['name'];
         $userStudent->cognome = $data['lastname'];
         $userStudent->eta = $data['age'];
         $userStudent->descrizione = $data['descrizione'];
-        $userStudent->save();
+        $saved=$userStudent->save();
+
+        dd($saved);
         
     }
 
