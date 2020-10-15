@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 
-Route::resource('index', 'StudentController'); #php artisan route:list
+Route::resource('students', 'StudentController'); #php artisan route:list
 
 #students, nome della table e nome della rotta
