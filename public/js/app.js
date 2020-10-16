@@ -19331,6 +19331,21 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* "use strict";
+
+alert('ciao')
+validateForm();
+
+function validateForm() {
+    let name = document.forms["myForm"]["name"].value;
+    x += document.forms["myForm"]["lastname"].value;
+    x += document.forms["myForm"]["age"].value;
+    x += document.forms["myForm"]["descrizione"].value;
+    
+    if (x == ""){
+      alert("Inserisci tutti i valori");
+    }
+} */
 
 /***/ }),
 

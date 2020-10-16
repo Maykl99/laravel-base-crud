@@ -10,13 +10,20 @@
     </thead>
     <tbody>
         @foreach ($data as $item) 
-        <tr>
-        <th scope="row">{{$item->nome}}</th>
+          <tr>
+            <th scope="row"><a href="{{ route('students.show', $item->id ) }}">{{$item->nome}}</th></a>
             <td>{{$item->cognome}}</td>
             <td>{{$item->eta}}</td>
-        </tr>
+            <td>
+              <form action="{{ route( 'students.destroy', $item->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" value="cancella" class="btn btn-danger">Danger</button>
+              </form>
+            </td>
+          </tr>
       @endforeach
     </tbody>
         <a href="{{ route('students.create') }}"><button type="button" class="btn btn-dark">Aggiungi un campo</button></a>
   </table>
-@endsection
+  @endsection

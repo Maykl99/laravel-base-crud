@@ -14,8 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        #grazie al modello effettuo la query
-        $data= Student::all(); // prende tutto i campi
+        $data= Student::all();
         return view('index',compact('data'));
     }
 
@@ -39,24 +38,18 @@ class StudentController extends Controller
     {
         $data= $request->all();
 
-        //controllo 
-        if(empty($data['name']) || 
-            empty($data['lastname']) || 
-            empty($data['age']) || 
-            empty($data['descrizione'])):
-        
-            return back()->withInput();
-        endif;
+        //controllo
+        $request->validate([
+            'nome' => 'required|max:255|min:4',
+            'cognome' => 'required|min: 2| max: 80',
+            'eta' => 'required|numeric|max:100|min: 2',
+            'descrizione' => 'required|min:5|max:255',
+        ]);
 
-        //validiamo
         $userStudent = new Student;
-        $userStudent->nome = $data['name'];
-        $userStudent->cognome = $data['lastname'];
-        $userStudent->eta = $data['age'];
-        $userStudent->descrizione = $data['descrizione'];
+        $userStudent->fill($data);
         $saved=$userStudent->save();
 
-        #dd($saved);
         return redirect()->route('students.index');
         
     }
@@ -67,9 +60,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
+        /* dd($student);
+        $student= Student::find($id); */
+        return view('show',compact('student'));
     }
 
     /**
@@ -78,9 +73,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('create',compact('student'));
     }
 
     /**
@@ -90,9 +85,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $data = $request->all();
+        $student->update($data);
+
+        return view('show',compact('student'));
     }
 
     /**
@@ -101,8 +99,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('students.index');
     }
 }

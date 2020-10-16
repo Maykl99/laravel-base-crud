@@ -1,28 +1,43 @@
 @extends('layout.form')
 
-  @section('form')
+@section('form')
+  @if ($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-        <form action="{{ route('students.store') }}" method="post">
+      <form name="myForm" action="{{ !empty($student) ? route('students.update', $student->id) : route('students.store') }}" method="post">
           @csrf
-          @method('POST')
+          @if(!empty($student))
+            @method('PATCH')
+            <input name="id" type="text" class="form-control" id="id" value="{{ $student->id }}">
+          @else
+            @method('POST')
+          @endif
+          
           <div class="form-group">
             <label for="name">Nome</label>
-            <input name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" >{{ old('name') }}
+            <input name="nome" type="text" class="form-control" id="nome" aria-describedby="emailHelp" value="{{ !empty($student) ? $student->nome : old('nome') }}">
             <small id="emailHelp" class="form-text text-muted">Non lasciare nessun campo vuoto!</small>
           </div>
           <div class="form-group">
             <label for="lastname">Cognome</label>
-            <input name="lastname" type="text" class="form-control" id="lastname" >{{ old('lastname') }}
+            <input name="cognome" type="text" class="form-control" id="cognome" value="{{ !empty($student) ? $student->cognome : old('cognome') }}">
           </div>
           <div class="form-group">
             <label class="form-check-label" for="age">Età</label>
-            <input name="age" type="text" class="form-control" id="age" >{{ old('age') }}
+            <input name="eta" type="text" class="form-control" id="eta" value="{{ !empty($student) ? $student->eta : old('eta') }}">
           </div>
           <div class="form-group">
               <label for="descrizione">Descrizione</label>
-              <textarea name="descrizione" class="form-control" id="descrizione" rows="3" >{{ old('descrizione') }}</textarea>
+              <textarea name="descrizione" class="form-control" id="descrizione" rows="3" value="{{ !empty($student) ? $student->descrizione : old('descrizione') }}"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Invia</button>
         </form>  
