@@ -18,7 +18,14 @@
               <form action="{{ route( 'students.destroy', $item->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" value="cancella" class="btn btn-danger">Danger</button>
+                <button type="submit" value="cancella" class="btn btn-danger">Elimina questo campo</button>
+              </form>
+            </td>
+            <td>
+              <form action="{{ route( 'students.edit', $item->id) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <button type="submit" value="modifica" class="btn btn-warning">Modifica questo campo</button>
               </form>
             </td>
           </tr>
