@@ -25,7 +25,7 @@
               <form action="{{ route( 'students.edit', $item->id) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <button type="submit" value="modifica" class="btn btn-warning">Modifica questo campo</button>
+                <button type="submit" value="modifica" class="btn btn-warning">Disabilitato</button>
               </form>
             </td>
           </tr>
