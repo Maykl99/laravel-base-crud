@@ -1,17 +1,17 @@
 require('./bootstrap');
 
-/* "use strict";
+"use strict";
 
-alert('ciao')
-validateForm();
+var app= new Vue({
+  el: '#app',
+  data: {
+      message: 'Inserisci un nuovo elemento Studente'
+  }
+})
 
-function validateForm() {
-    let name = document.forms["myForm"]["name"].value;
-    x += document.forms["myForm"]["lastname"].value;
-    x += document.forms["myForm"]["age"].value;
-    x += document.forms["myForm"]["descrizione"].value;
-    
-    if (x == ""){
-      alert("Inserisci tutti i valori");
-    }
-} */
+var app1= new Vue({
+  el: '#app-1',
+  data: {
+      message: 'Non lasciare questo campo vuoto!'
+  }
+})

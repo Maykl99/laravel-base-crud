@@ -13,7 +13,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-      <form name="myForm" action="{{ !empty($student) ? route('students.update', $student->id) : route('students.store') }}" method="post">
+      <form id="app-1" name="myForm" action="{{ !empty($student) ? route('students.update', $student->id) : route('students.store') }}" method="post">
           @csrf
           @if(!empty($student))
             @method('PATCH')
@@ -24,20 +24,20 @@
           
           <div class="form-group">
             <label for="name">Nome</label>
-            <input name="nome" type="text" class="form-control" id="nome" aria-describedby="emailHelp" value="{{ !empty($student) ? $student->nome : old('nome') }}">
+            <input v-bind:title="message" name="nome" type="text" class="form-control" id="nome" aria-describedby="emailHelp" value="{{ !empty($student) ? $student->nome : old('nome') }}">
             <small id="emailHelp" class="form-text text-muted">Non lasciare nessun campo vuoto!</small>
           </div>
           <div class="form-group">
             <label for="lastname">Cognome</label>
-            <input name="cognome" type="text" class="form-control" id="cognome" value="{{ !empty($student) ? $student->cognome : old('cognome') }}">
+            <input v-bind:title="message" name="cognome" type="text" class="form-control" id="cognome" value="{{ !empty($student) ? $student->cognome : old('cognome') }}">
           </div>
           <div class="form-group">
             <label class="form-check-label" for="age">Età</label>
-            <input name="eta" type="text" class="form-control" id="eta" value="{{ !empty($student) ? $student->eta : old('eta') }}">
+            <input v-bind:title="message" name="eta" type="text" class="form-control" id="eta" value="{{ !empty($student) ? $student->eta : old('eta') }}">
           </div>
           <div class="form-group">
               <label for="descrizione">Descrizione</label>
-              <textarea name="descrizione" class="form-control" id="descrizione" rows="3" value="{{ !empty($student) ? $student->descrizione : old('descrizione') }}"></textarea>
+              <textarea v-bind:title="message" name="descrizione" class="form-control" id="descrizione" rows="3" value="{{ !empty($student) ? $student->descrizione : old('descrizione') }}"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Invia</button>
         </form>  

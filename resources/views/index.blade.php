@@ -31,6 +31,10 @@
           </tr>
       @endforeach
     </tbody>
-        <a href="{{ route('students.create') }}"><button type="button" class="btn btn-dark">Aggiungi un campo</button></a>
+        <div id="app" v-bind:title="message" >
+          <a href="{{ route('students.create') }}">
+            <button type="button" class="btn btn-dark">Aggiungi un campo</button>
+          </a>
+        </div>
   </table>
   @endsection

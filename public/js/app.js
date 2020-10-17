@@ -19331,21 +19331,21 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/* "use strict";
 
-alert('ciao')
-validateForm();
+"use strict";
 
-function validateForm() {
-    let name = document.forms["myForm"]["name"].value;
-    x += document.forms["myForm"]["lastname"].value;
-    x += document.forms["myForm"]["age"].value;
-    x += document.forms["myForm"]["descrizione"].value;
-    
-    if (x == ""){
-      alert("Inserisci tutti i valori");
-    }
-} */
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Inserisci un nuovo elemento Studente'
+  }
+});
+var app1 = new Vue({
+  el: '#app-1',
+  data: {
+    message: 'Non lasciare questo campo vuoto!'
+  }
+});
 
 /***/ }),
 
