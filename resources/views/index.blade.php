@@ -24,7 +24,7 @@
             <td>
               <form action="{{ route( 'students.edit', $item->id) }}" method="POST">
                 @csrf
-                @method('PATCH')
+                @method('GET')
                 <button type="submit" value="modifica" class="btn btn-warning">Disabilitato</button>
               </form>
             </td>
